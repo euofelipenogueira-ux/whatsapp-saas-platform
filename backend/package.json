@@ -26,9 +26,12 @@
     "uuid": "^9.0.0",
     "joi": "^17.9.1",
     "socket.io": "^4.6.1",
+    "@whiskeysockets/baileys": "^6.5.0",
+    "qrcode": "^1.5.3",
+    "pino": "^8.14.1",
+    "events": "^3.3.0",
     "redis": "^4.6.5",
     "bull": "^4.10.4",
-    "baileys": "^6.2.37",
     "crypto": "^1.0.1"
   },
   "devDependencies": {

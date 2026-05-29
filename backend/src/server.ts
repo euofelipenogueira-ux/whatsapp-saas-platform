@@ -19,20 +19,21 @@ const start = async () => {
     await connectDatabase();
     logger.info('✓ Conectado ao MongoDB');
 
-    // Criar app Express
-    const app = createApp();
+    // Criar app Express com Socket.IO
+    const { app, httpServer } = createApp();
 
     // Iniciar servidor
-    const server = app.listen(PORT, () => {
+    httpServer.listen(PORT, () => {
       logger.info(`✓ Servidor rodando em http://localhost:${PORT}`);
       logger.info(`✓ Ambiente: ${NODE_ENV}`);
       logger.info(`✓ API disponível em http://localhost:${PORT}/api/v1`);
+      logger.info(`✓ Socket.IO disponível em ws://localhost:${PORT}`);
     });
 
     // Graceful shutdown
     process.on('SIGTERM', async () => {
       logger.info('SIGTERM recebido. Encerrando gracefully...');
-      server.close(async () => {
+      httpServer.close(async () => {
         logger.info('Servidor fechado');
         process.exit(0);
       });
@@ -40,7 +41,7 @@ const start = async () => {
 
     process.on('SIGINT', async () => {
       logger.info('SIGINT recebido. Encerrando gracefully...');
-      server.close(async () => {
+      httpServer.close(async () => {
         logger.info('Servidor fechado');
         process.exit(0);
       });
