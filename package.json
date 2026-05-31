@@ -1,0 +1,16 @@
+{
+  "name": "uselvi-api",
+  "version": "0.1.0",
+  "description": "API platform for managing WhatsApp-style instances, QR sessions, API tokens, and message endpoints.",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "pg": "^8.16.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
